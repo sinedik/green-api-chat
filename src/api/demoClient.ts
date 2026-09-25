@@ -143,7 +143,7 @@ export function createDemoClient(): GreenApiClient {
         return contact ? { exist: true, chatId: contact.chatId, username: contact.username } : { exist: false, chatId: '' }
       }
       const contact = CONTACTS.find((c) => c.phoneNumber === query.phoneNumber)
-      return { exist: true, chatId: contact?.chatId ?? `demo-${query.phoneNumber}`, phoneNumber: query.phoneNumber }
+      return { exist: true, chatId: contact?.chatId ?? String(query.phoneNumber).slice(-9), phoneNumber: query.phoneNumber }
     },
     sendMessage: async (chatId, message) => {
       await sleep(300)
