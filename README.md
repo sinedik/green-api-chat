@@ -7,8 +7,8 @@
 Веб-чат для MAX и Telegram на HTTP API [GREEN-API](https://green-api.com/).<br />
 Тестовое задание на позицию фронтенд-разработчика React.
 
-<!-- TODO: подставить ссылки после деплоя -->
-[Открыть демо](https://<project>.vercel.app) · [Видео](#)
+<!-- TODO: добавить ссылку на видео -->
+[Открыть демо](https://green-chat-web.vercel.app)
 
 <sub>Powered by</sub><br />
 <a href="https://green-api.com/"><img src="public/green-api-logo.svg" height="20" alt="GREEN-API" /></a>
@@ -50,7 +50,7 @@
 Нужен Node.js 20 или новее.
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/sinedik/green-api-chat.git
 cd green-api-chat
 npm install
 npm run dev
