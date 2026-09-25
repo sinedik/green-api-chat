@@ -1,0 +1,192 @@
+@import 'tailwindcss';
+
+/* Палитра по мотивам web.max.ru: тёмная тема по умолчанию, светлая — по системной настройке */
+@theme {
+  --color-app: var(--app);
+  --color-panel: var(--panel);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-strong-hover: var(--accent-strong-hover);
+  --color-bubble-in: var(--bubble-in);
+  --color-bubble-out: var(--bubble-out);
+  --color-bubble-out-fg: var(--bubble-out-fg);
+  --color-bubble-out-muted: var(--bubble-out-muted);
+  --color-bubble-out-danger: var(--bubble-out-danger);
+  --color-status: var(--status);
+  --color-read: var(--read);
+  --color-danger: var(--danger);
+  --color-danger-strong: var(--danger-strong);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-brand: var(--brand);
+  --color-brand-fg: var(--brand-fg);
+
+  --shadow-bubble: var(--bubble-shadow);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, Helvetica, Arial, sans-serif;
+}
+
+/*
+ * accent — для текста и иконок (контраст ≥4.5 к фону панели),
+ * accent-strong — для заливок под белым текстом (кнопки, бейджи; белый на нём ≥4.5)
+ */
+:root {
+  color-scheme: dark;
+  --app: #0f0f12;
+  --panel: #17181c;
+  --surface: #25262d;
+  --surface-hover: #2e3038;
+  --line: rgb(255 255 255 / 0.08);
+  --fg: #f2f3f5;
+  --muted: #8f929c;
+  --accent: #3d8eff;
+  --accent-hover: #62a3ff;
+  --accent-strong: #2a67e8;
+  --accent-strong-hover: #3573f0;
+  --bubble-in: #25262d;
+  --bubble-out: #1f6fe5;
+  --bubble-out-fg: #ffffff;
+  --bubble-out-muted: rgb(255 255 255 / 0.78);
+  --bubble-out-danger: #ffd0d2;
+  --bubble-shadow: 0 0 #0000;
+  --status: rgb(255 255 255 / 0.6);
+  --read: #ffffff;
+  --danger: #ff5a5f;
+  --danger-strong: #d92d33;
+  --success: #34c77b;
+  --warning: #f5a524;
+  --pattern: rgb(255 255 255 / 0.03);
+  /* Зелёный GREEN-API: brand — заливки знака, brand-fg — текст (контраст ≥4.5 к панели) */
+  --brand: #3b9702;
+  --brand-fg: #5cb82a;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --app: #eef0f4;
+    --panel: #ffffff;
+    --surface: #f1f2f6;
+    --surface-hover: #e6e8ee;
+    --line: #e3e5eb;
+    --fg: #16171b;
+    --muted: #626673;
+    --accent: #0a66e8;
+    --accent-hover: #0857c7;
+    --accent-strong: #1a6df0;
+    --accent-strong-hover: #0f5fdc;
+    --bubble-in: #ffffff;
+    --bubble-out: #d9e8ff;
+    --bubble-out-fg: #16171b;
+    --bubble-out-muted: #475a7a;
+    --bubble-out-danger: #c4262c;
+    --bubble-shadow: 0 1px 1px rgb(0 0 0 / 0.06);
+    --status: #5f6b80;
+    --read: #0a66e8;
+    --danger: #d92d33;
+    --danger-strong: #d92d33;
+    --success: #1a8a50;
+    --warning: #9a5b00;
+    --pattern: rgb(0 0 0 / 0.04);
+    --brand: #3b9702;
+    --brand-fg: #2f7d02;
+  }
+}
+
+@layer base {
+  /* Единое кольцо фокуса для всего интерактивного, у чего нет своего */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--app);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Фон ленты сообщений — лёгкий узор, как в MAX */
+.chat-pattern {
+  background-color: var(--app);
+  background-image: radial-gradient(var(--pattern) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-hover) transparent;
+}
+
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+.animate-bubble {
+  animation: bubble-in 180ms ease-out;
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes status-pop {
+  40% {
+    transform: scale(1.35);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
