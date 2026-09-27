@@ -7,14 +7,18 @@
 Веб-чат для MAX и Telegram на HTTP API [GREEN-API](https://green-api.com/).<br />
 Тестовое задание на позицию фронтенд-разработчика React.
 
-[Открыть демо](https://green-chat-web.vercel.app) · [Смотреть видео](https://github.com/user-attachments/assets/abeae010-c3f4-4b9b-821c-0dd16f6d9974)
+[Открыть демо](https://green-chat-web.vercel.app) · [Смотреть видео](#видео)
 
 <sub>Powered by</sub><br />
 <a href="https://green-api.com/"><img src="public/green-api-logo.svg" height="20" alt="GREEN-API" /></a>
 
 </div>
 
+## Видео
+
 https://github.com/user-attachments/assets/abeae010-c3f4-4b9b-821c-0dd16f6d9974
+
+## Скриншоты
 
 <p align="center">
   <img src="docs/screenshots/login.png" width="49%" alt="Вход" />
